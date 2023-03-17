@@ -10,7 +10,7 @@ function Header() {
           <Image
             width={150}
             height={40}
-            src='/images/logo.png'
+            src='/images/amazon/logo.png'
             alt=''
             objectFit='contain'
             className='cursor-pointer'
