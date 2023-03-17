@@ -21,7 +21,7 @@ function Product({ id, title, price, description, category, image }) {
         {Array(rating)
           .fill()
           .map((_, index) => {
-            return <StarIcon className='h-5 text-yellow-500' />;
+            return <StarIcon key={index} className='h-5 text-yellow-500' />;
           })}
       </div>
 
