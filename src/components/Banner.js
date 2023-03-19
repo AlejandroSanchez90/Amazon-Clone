@@ -10,7 +10,7 @@ function Banner() {
         showStatus={false}
         showIndicators={false}
         showThumbs={false}
-        interval={5000}>
+        interval={3000}>
         <div className=''>
           <img src='images/carousel/p1.jpg' loading='lazy' alt='' />
         </div>

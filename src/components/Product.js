@@ -4,7 +4,7 @@ import { StarIcon } from '@heroicons/react/solid';
 import { NumericFormat } from 'react-number-format';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../slices/cartSlice';
-
+import { CheckCircleIcon } from '@heroicons/react/solid';
 const MAX_RATING = 5;
 const MIN_RATING = 1;
 
@@ -12,8 +12,9 @@ function Product({ id, title, price, description, category, image }) {
   const [rating] = useState(Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING);
   const dispatch = useDispatch();
   const [hasPrime] = useState(Math.random() < 0.5);
-
+  const [addedToCart, setaddedToCart] = useState(false);
   const addItemToCart = () => {
+    setaddedToCart(true);
     const product = {
       id,
       title,
@@ -55,9 +56,17 @@ function Product({ id, title, price, description, category, image }) {
         </div>
       )}
 
-      <button className='mt-auto button' onClick={addItemToCart}>
-        Add to Cart
-      </button>
+      <div className='flex flex-col mt-auto space-y-2'>
+        {addedToCart && (
+          <p className='text-green-800 mt-auto'>
+            <CheckCircleIcon className='w-6 inline' />
+            <span> Added to Cart</span>
+          </p>
+        )}
+        <button className='button' onClick={addItemToCart}>
+          Add to Cart
+        </button>
+      </div>
     </div>
   );
 }
