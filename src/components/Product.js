@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { StarIcon } from '@heroicons/react/solid';
 import { NumericFormat } from 'react-number-format';
 import { useDispatch } from 'react-redux';
@@ -9,10 +9,18 @@ const MAX_RATING = 5;
 const MIN_RATING = 1;
 
 function Product({ id, title, price, description, category, image }) {
-  const [rating] = useState(Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING);
+  const [rating, setRating] = useState(1);
+  const [hasPrime, setHasPrime] = useState(true);
+  const [addedToCart, setaddedToCart] = useState(false);
   const dispatch = useDispatch();
-  const [hasPrime] = useState(Math.random() < 0.5);
+
+  useEffect(() => {
+    setRating(Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING);
+    setHasPrime(Math.random() < 0.5);
+  }, []);
+
   const addItemToCart = () => {
+    setaddedToCart(true);
     const product = {
       id,
       title,
@@ -55,6 +63,13 @@ function Product({ id, title, price, description, category, image }) {
       )}
 
       <div className='flex flex-col mt-auto space-y-2'>
+        <p
+          className={`text-green-800 mt-auto ${
+            addedToCart ? 'opacity-1' : 'opacity-0'
+          } transition-opacity duration-200`}>
+          <CheckCircleIcon className='w-6 inline' />
+          <span> Added to Cart</span>
+        </p>
         <button className='button' onClick={addItemToCart}>
           Add to Cart
         </button>
