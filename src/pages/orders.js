@@ -2,7 +2,7 @@ import { getSession, useSession } from 'next-auth/react';
 import Header from '../components/Header';
 import db from '../../firebase';
 import moment from 'moment/moment';
-
+import Order from '../components/Order';
 function Orders({ orders }) {
   const { data } = useSession();
   return (
@@ -11,9 +11,21 @@ function Orders({ orders }) {
       <main className='max-w-screen-lg mx-auto p-10'>
         <h1 className='text-3xl  border-b mb-2 p-1 border-yellow-400'>Your Orders</h1>
 
-        {data ? <h2>x orders</h2> : <h2>Please sign in to see your orders</h2>}
+        {data ? <h2>{orders.length} Orders</h2> : <h2>Please sign in to see your orders</h2>}
 
-        <div className='mt-5 space-y-4'></div>
+        <div className='mt-5 space-y-4'>
+          {orders?.map(({ id, amount, amountShipping, items, timestamp, images }) => (
+            <Order
+              key={id}
+              id={id}
+              amount={amount}
+              amountShipping={amountShipping}
+              items={items}
+              timestamp={timestamp}
+              images={images}
+            />
+          ))}
+        </div>
       </main>
     </div>
   );
