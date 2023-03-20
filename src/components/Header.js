@@ -36,11 +36,11 @@ function Header() {
 
         {/* Right side */}
         <div className='text-white flex items-center text-xs space-x-6 mx-6 whitespace-nowrap'>
-          <div onClick={data?.user ? signOut : signIn} className='link'>
-            <p>{data?.user ? `Hello, ${data.user.name}` : 'Sign In'}</p>
+          <div onClick={data ? signOut : signIn} className='link'>
+            <p>{data ? `Hello, ${data.user.name}` : 'Sign In'}</p>
             <p className='font-extrabold md:text-sm'>Account & List</p>
           </div>
-          <div className='link'>
+          <div className='link' onClick={() => router.push('/orders')}>
             <p>Returns</p>
             <p className='font-extrabold md:text-sm'>& Orders</p>
           </div>

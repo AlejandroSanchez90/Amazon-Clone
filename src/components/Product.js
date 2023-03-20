@@ -57,12 +57,13 @@ function Product({ id, title, price, description, category, image }) {
       )}
 
       <div className='flex flex-col mt-auto space-y-2'>
-        {addedToCart && (
-          <p className='text-green-800 mt-auto'>
-            <CheckCircleIcon className='w-6 inline' />
-            <span> Added to Cart</span>
-          </p>
-        )}
+        <p
+          className={`text-green-800 mt-auto ${
+            addedToCart ? 'opacity-1' : 'opacity-0'
+          } transition-opacity duration-200`}>
+          <CheckCircleIcon className='w-6 inline' />
+          <span> Added to Cart</span>
+        </p>
         <button className='button' onClick={addItemToCart}>
           Add to Cart
         </button>
