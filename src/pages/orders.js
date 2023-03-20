@@ -3,7 +3,7 @@ import Header from '../components/Header';
 import db from '../../firebase';
 import moment from 'moment/moment';
 import Order from '../components/Order';
-function Orders({ orders }) {
+function Orders({ orders, session }) {
   const { data } = useSession();
   return (
     <div>
@@ -65,6 +65,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       orders: orders,
+      session: session,
     },
   };
 }
