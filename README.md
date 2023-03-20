@@ -15,3 +15,14 @@ This project is an e-commerce website that replicates the look and feel of **Ama
 5. Stripe
 6. Webhooks
 7. NextAuth
+
+# Environment Variables
+
+GOOGLE_ID=
+GOOGLE_SECRET=
+NEXTAUTH_URL=
+SECRET=
+STRIPE_PUBLIC_KEY=
+STRIPE_SECRET_KEY=
+STRIPE_SIGNING_SECRET=
+HOST=
